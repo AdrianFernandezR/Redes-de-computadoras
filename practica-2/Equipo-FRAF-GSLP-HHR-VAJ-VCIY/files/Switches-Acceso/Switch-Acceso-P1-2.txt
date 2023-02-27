@@ -1,0 +1,85 @@
+AccesP1-2#copy  running-config  startup-config
+Destination filename [startup-config]?
+Building configuration...
+[OK]
+AccesP1-2#show startup-config
+Using 1156 bytes
+!
+version 12.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname AccesP1-2
+!
+enable secret 5 $1$mERr$YsXqIF8306MddLsesE9MP/
+enable password cisco
+!
+!
+!
+ip ssh version 2
+ip domain-name cisco.com
+!
+username netadmin privilege 1 password 0 netadmin
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ switchport mode trunk
+!
+interface FastEthernet1/1
+!
+interface FastEthernet2/1
+!
+interface FastEthernet3/1
+!
+interface FastEthernet4/1
+!
+interface FastEthernet5/1
+ switchport access vlan 100
+!
+interface FastEthernet6/1
+!
+interface FastEthernet7/1
+!
+interface FastEthernet8/1
+!
+interface FastEthernet9/1
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan2
+ description vlan-2-pc
+ ip address 10.2.0.4 255.255.255.0
+!
+interface Vlan10
+ description vlan-10-servers
+ ip address 10.10.0.4 255.255.255.0
+!
+interface Vlan100
+ description vlan-100-TelWifi
+ ip address 10.100.0.4 255.255.255.0
+!
+!
+!
+!
+line con 0
+ password sanfran
+ login
+!
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login local
+ transport input ssh
+!
+!
+!
+!
+end

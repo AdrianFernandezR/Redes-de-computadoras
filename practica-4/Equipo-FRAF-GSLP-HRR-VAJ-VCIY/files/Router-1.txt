@@ -1,0 +1,23 @@
+Router01#show startup-config
+Using 1221 bytes
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router01
+!
+!
+!
+enable secret 5 $1$mERr$Yj3qyNt3.LU1s6HY0Xd9O1
+!
+!
+!
+ip dhcp pool ip1
+ network 192.168.1.0 255.255.255.0
+ default-router 192.168.1.1
+!
+!
+!
+no ip cef

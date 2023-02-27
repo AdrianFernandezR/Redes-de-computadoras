@@ -1,0 +1,23 @@
+Router04#show startup-config
+Using 1136 bytes
+!
+version 12.2
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Router04
+!
+!
+!
+enable password exec
+!
+!
+!
+ip dhcp pool ip4
+ network 192.168.4.0 255.255.255.0
+ default-router 192.168.4.1
+!
+!
+!
+no ip cef

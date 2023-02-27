@@ -1,0 +1,173 @@
+Switch#copy  running-config  startup-config
+Destination filename [startup-config]?
+Building configuration...
+[OK]
+Switch#show startup-config
+Using 2554 bytes
+!
+version 12.2(37)SE1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname Switch
+!
+!
+!
+ip dhcp excluded-address 10.2.0.1 10.2.0.10
+ip dhcp excluded-address 10.10.0.1 10.10.0.10
+ip dhcp excluded-address 10.11.0.1 10.11.0.10
+ip dhcp excluded-address 10.100.0.1 10.100.0.10
+!
+ip dhcp pool vlan-2
+ network 10.2.0.0 255.255.255.0
+ default-router 10.2.0.3
+ dns-server 10.0.0.2
+ip dhcp pool vlan-2-pc
+ network 10.2.0.0 255.255.255.0
+ default-router 10.2.0.3
+ dns-server 10.0.0.2
+ip dhcp pool vlan-10-laptops
+ network 10.10.0.0 255.255.255.0
+ default-router 10.10.0.3
+ dns-server 10.0.0.2
+ip dhcp pool vlan-11-servers
+ network 10.11.0.0 255.255.255.0
+ default-router 10.11.0.3
+ dns-server 10.0.0.2
+ip dhcp pool vlan-100-wireless
+ network 10.100.0.0 255.255.255.0
+ default-router 10.100.0.3
+ dns-server 10.0.0.2
+!
+!
+ip routing
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface FastEthernet0/1
+ description swacpb-1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/2
+ description dist-p1
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/3
+ description dist-p2
+ switchport trunk encapsulation dot1q
+ switchport mode trunk
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+interface FastEthernet0/7
+!
+interface FastEthernet0/8
+!
+interface FastEthernet0/9
+!
+interface FastEthernet0/10
+!
+interface FastEthernet0/11
+!
+interface FastEthernet0/12
+!
+interface FastEthernet0/13
+!
+interface FastEthernet0/14
+!
+interface FastEthernet0/15
+!
+interface FastEthernet0/16
+!
+interface FastEthernet0/17
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+!
+interface FastEthernet0/22
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+interface Vlan2
+ description vlan-2-pc
+ mac-address 0001.c701.8601
+ ip address 10.2.0.3 255.255.255.0
+!
+interface Vlan10
+ description vlan-10-laptops
+ mac-address 0001.c701.8602
+ ip address 10.10.0.3 255.255.255.0
+!
+interface Vlan11
+ description vlan-11-servers
+ mac-address 0001.c701.8603
+ ip address 10.11.0.3 255.255.255.0
+!
+interface Vlan100
+ description vlan-100-wireless
+ mac-address 0001.c701.8604
+ ip address 10.100.0.3 255.255.255.0
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ login
+!
+!
+!
+!
+end
